@@ -1,0 +1,24 @@
+{
+    "navbar": {
+      "logo": "MyLogo",
+      "about": "About Me",
+      "tech": "TechStack & Projects",
+      "contact": "Contact",
+      "cv": "CV",
+      "certificates": "Certificates"
+    },
+    "settings": {
+      "language": "Change Language",
+      "theme": "Toggle Theme"
+    },
+    "hero": {
+        "welcome": "Welcome!",
+        "description": "Discover my projects and skills.",
+        "cta1": "Action 1",
+        "cta2": "Action 2",
+        "subtitle": "Let's get started!",
+        "subdescription": "Let's make something happen together.",
+        "button": "My Button"
+      }
+  }
+  
