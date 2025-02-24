@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTranslation } from 'react-i18next';
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import { useTheme } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
@@ -28,29 +28,37 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = [
-    { text: t('navbar.about'), link: '#about' },
-    { text: t('navbar.tech'), link: '#tech' },
-    { text: t('navbar.contact'), link: '#contact' },
-    { text: t('navbar.cv'), link: '#cv' },
-    { text: t('navbar.certificates'), link: '#certificates' },
+    { text: t("navbar.about"), link: "#about" },
+    { text: t("navbar.tech"), link: "#tech" },
+    { text: t("navbar.contact"), link: "#contact" },
+    { text: t("navbar.cv"), link: "#cv" },
+    { text: t("navbar.certificates"), link: "#certificates" },
   ];
 
   const handleLanguageToggle = () => {
-    const newLang = i18n.language === 'de' ? 'en' : 'de';
+    const newLang = i18n.language === "de" ? "en" : "de";
     i18n.changeLanguage(newLang);
   };
 
   const iconButtons = (
-    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', mt: 2 }}>
+    <Box sx={{ display: "flex", gap: 1, justifyContent: "center", mt: 2 }}>
       <IconButton color="inherit" onClick={handleLanguageToggle}>
-        <span role="img" aria-label="flag" style={{ fontSize: '24px' }}>
-          {i18n.language === 'de' ? '🇬🇧' : '🇩🇪'}
+        <span role="img" aria-label="flag" style={{ fontSize: "24px" }}>
+          {i18n.language === "de" ? "🇬🇧" : "🇩🇪"}
         </span>
       </IconButton>
-      <IconButton color="inherit" href="https://github.com/yourusername" target="_blank">
+      <IconButton
+        color="inherit"
+        href="https://github.com/yourusername"
+        target="_blank"
+      >
         <GitHubIcon />
       </IconButton>
-      <IconButton color="inherit" href="https://linkedin.com/in/yourusername" target="_blank">
+      <IconButton
+        color="inherit"
+        href="https://linkedin.com/in/yourusername"
+        target="_blank"
+      >
         <LinkedInIcon />
       </IconButton>
     </Box>
@@ -61,30 +69,40 @@ const Navbar: React.FC = () => {
       <AppBar
         position="static"
         elevation={0}
-        sx={{ mb: 8, backgroundColor: theme.palette.backgroundDarker, boxShadow: '0px 4px 8px rgba(0,0,0,0.3)' }}
+        sx={{
+          mb: 8,
+          backgroundColor: theme.palette.backgroundDarker,
+          boxShadow: "0px 4px 8px rgba(0,0,0,0.3)",
+        }}
       >
         <Toolbar>
           {isMobile ? (
             <>
-              <IconButton color="inherit" onClick={toggleDrawer(true)} edge="start">
+              <IconButton
+                color="inherit"
+                onClick={toggleDrawer(true)}
+                edge="start"
+              >
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                {t('navbar.logo')}
+                {t("navbar.logo")}
               </Typography>
             </>
           ) : (
-            <Box sx={{ display: 'flex', width: '100%' }}>
-              <Box sx={{ flexBasis: '10%', display: 'flex', alignItems: 'center' }}>
-                <Typography variant="h6">{t('navbar.logo')}</Typography>
+            <Box sx={{ display: "flex", width: "100%" }}>
+              <Box
+                sx={{ flexBasis: "10%", display: "flex", alignItems: "center" }}
+              >
+                <Typography variant="h6">{t("navbar.logo")}</Typography>
               </Box>
               <Box
                 sx={{
-                  flexBasis: '70%',
-                  display: 'flex',
-                  justifyContent: 'flex-start',
+                  flexBasis: "70%",
+                  display: "flex",
+                  justifyContent: "flex-start",
                   gap: 2,
-                  alignItems: 'center',
+                  alignItems: "center",
                 }}
               >
                 {menuItems.map((item) => (
@@ -92,7 +110,7 @@ const Navbar: React.FC = () => {
                     key={item.text}
                     color="inherit"
                     href={item.link}
-                    sx={{ textTransform: 'none' }}
+                    sx={{ textTransform: "none" }}
                   >
                     {item.text}
                   </Button>
@@ -100,22 +118,34 @@ const Navbar: React.FC = () => {
               </Box>
               <Box
                 sx={{
-                  flexBasis: '20%',
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  alignItems: 'center',
+                  flexBasis: "20%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
                   gap: 1,
                 }}
               >
                 <IconButton color="inherit" onClick={handleLanguageToggle}>
-                  <span role="img" aria-label="flag" style={{ fontSize: '24px' }}>
-                    {i18n.language === 'de' ? '🇬🇧' : '🇩🇪'}
+                  <span
+                    role="img"
+                    aria-label="flag"
+                    style={{ fontSize: "24px" }}
+                  >
+                    {i18n.language === "de" ? "🇬🇧" : "🇩🇪"}
                   </span>
                 </IconButton>
-                <IconButton color="inherit" href="https://github.com/yourusername" target="_blank">
+                <IconButton
+                  color="inherit"
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                >
                   <GitHubIcon />
                 </IconButton>
-                <IconButton color="inherit" href="https://linkedin.com/in/yourusername" target="_blank">
+                <IconButton
+                  color="inherit"
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                >
                   <LinkedInIcon />
                 </IconButton>
               </Box>
